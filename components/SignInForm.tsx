@@ -9,33 +9,38 @@ export default function SignInForm() {
   const [password, setPassword] = useState("");
 
   return (
-    <form className="flex flex-col gap-4">
-      <Input
-        id="username"
-        label="Username"
-        onChange={(e) => {
-          setUsername(e.target.value);
-        }}
-        value={username}
-      />
-      <Input
-        id="email"
-        label="Email"
-        onChange={(e) => {
-          setEmail(e.target.value);
-        }}
-        type="email"
-        value={email}
-      />
-      <Input
-        id="password"
-        label="Password"
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        type="password"
-        value={password}
-      />
-    </form>
+    <>
+      <div className="flex flex-col gap-4">
+        <Input
+          id="username"
+          label="Username"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+          value={username}
+        />
+        <Input
+          id="email"
+          label="Email"
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          type="email"
+          value={email}
+        />
+        <Input
+          id="password"
+          label="Password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          type="password"
+          value={password}
+        />
+      </div>
+      <button className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition">
+        Login
+      </button>
+    </>
   );
 }
