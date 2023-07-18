@@ -41,6 +41,12 @@ export default function SignInForm() {
       <button className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition">
         Login
       </button>
+      <p className="text-neutral-500 mt-12">
+        First time using Netflix?
+        <span className="text-white ml-1 hover:underline cursor-pointer">
+          Create an account
+        </span>
+      </p>
     </>
   );
 }
