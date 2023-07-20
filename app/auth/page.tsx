@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import Input from "@/components/Input";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 
 export default function auth() {
   const [email, setEmail] = useState("");
@@ -26,9 +27,25 @@ export default function auth() {
         password,
       });
     } catch (err) {
-      console.error(err);
+      // Not going to render errors in this project.
+      // Can grab the err.response.data.error from axios to place in an alert
+      // Alert can be p tag on page, or toast componenet (toastify)
+      console.error("page error: ", err);
     }
   }, [email, name, password, confirmPassword]);
+
+  const login = useCallback(async () => {
+    try {
+      await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+        callbackUrl: "/",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }, [email, password]);
 
   return (
     <>
@@ -77,7 +94,7 @@ export default function auth() {
         )}
       </div>
       <button
-        onClick={isLogin ? () => {} : register}
+        onClick={isLogin ? login : register}
         className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
       >
         {isLogin ? "Login" : "Sign up"}
