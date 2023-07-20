@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import Input from "@/components/Input";
+import axios from "axios";
 
 export default function auth() {
   const [email, setEmail] = useState("");
@@ -13,6 +14,18 @@ export default function auth() {
 
   const toggleIsLogin = useCallback(() => {
     setIsLogin((currentIsLogin) => !currentIsLogin);
+  }, []);
+
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/auth/register", {
+        email,
+        username,
+        password,
+      });
+    } catch (err) {
+      console.error(err);
+    }
   }, []);
 
   return (
