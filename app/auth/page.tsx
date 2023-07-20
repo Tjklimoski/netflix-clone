@@ -4,8 +4,10 @@ import { useCallback, useState } from "react";
 import Input from "@/components/Input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export default function auth() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -42,10 +44,12 @@ export default function auth() {
         redirect: false,
         callbackUrl: "/",
       });
+
+      router.push("/");
     } catch (err) {
       console.log(err);
     }
-  }, [email, password]);
+  }, [email, password, router]);
 
   return (
     <>
