@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function auth() {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -20,7 +20,7 @@ export default function auth() {
     try {
       await axios.post("/api/auth/register", {
         email,
-        username,
+        name,
         password,
       });
     } catch (err) {
@@ -36,12 +36,12 @@ export default function auth() {
       <div className="flex flex-col gap-4">
         {!isLogin && (
           <Input
-            id="username"
+            id="name"
             label="Username"
             onChange={(e) => {
-              setUsername(e.target.value);
+              setName(e.target.value);
             }}
-            value={username}
+            value={name}
           />
         )}
         <Input
