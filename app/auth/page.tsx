@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import Input from "@/components/Input";
 import axios from "axios";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function auth() {
   const router = useRouter();
@@ -18,23 +18,6 @@ export default function auth() {
   const toggleIsLogin = useCallback(() => {
     setIsLogin((currentIsLogin) => !currentIsLogin);
   }, []);
-
-  const register = useCallback(async () => {
-    try {
-      if (password !== confirmPassword)
-        throw new Error("Passwords do not match");
-      await axios.post("/api/auth/register", {
-        email,
-        name,
-        password,
-      });
-    } catch (err) {
-      // Not going to render errors in this project.
-      // Can grab the err.response.data.error from axios to place in an alert
-      // Alert can be p tag on page, or toast componenet (toastify)
-      console.error("page error: ", err);
-    }
-  }, [email, name, password, confirmPassword]);
 
   const login = useCallback(async () => {
     try {
@@ -50,6 +33,24 @@ export default function auth() {
       console.log(err);
     }
   }, [email, password, router]);
+
+  const register = useCallback(async () => {
+    try {
+      if (password !== confirmPassword)
+        throw new Error("Passwords do not match");
+      await axios.post("/api/auth/register", {
+        email,
+        name,
+        password,
+      });
+      login();
+    } catch (err) {
+      // Not going to render errors in this project.
+      // Can grab the err.response.data.error from axios to place in an alert
+      // Alert can be p tag on page, or toast componenet (toastify)
+      console.error("page error: ", err);
+    }
+  }, [email, name, password, confirmPassword, login]);
 
   return (
     <>
