@@ -6,7 +6,7 @@ import axios from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
-import { FaGithub } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
 
 export default function auth() {
   const router = useRouter();
@@ -100,12 +100,23 @@ export default function auth() {
           />
         )}
       </div>
+
       <button
         onClick={isLogin ? login : register}
         className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
       >
         {isLogin ? "Login" : "Sign up"}
       </button>
+
+      <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+          <FcGoogle size={30} />
+        </div>
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+          <FaGithub className="text-zinc-900" size={30} color="" />
+        </div>
+      </div>
+
       {isLogin ? (
         <p className="text-neutral-500 mt-12">
           First time using Netflix?
