@@ -18,6 +18,8 @@ export default function auth() {
 
   const register = useCallback(async () => {
     try {
+      if (password !== confirmPassword)
+        throw new Error("Passwords do not match");
       await axios.post("/api/auth/register", {
         email,
         name,
@@ -26,7 +28,7 @@ export default function auth() {
     } catch (err) {
       console.error(err);
     }
-  }, []);
+  }, [email, name, password, confirmPassword]);
 
   return (
     <>
@@ -74,7 +76,10 @@ export default function auth() {
           />
         )}
       </div>
-      <button className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition">
+      <button
+        onClick={isLogin ? () => {} : register}
+        className="bg-red-600 py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
+      >
         {isLogin ? "Login" : "Sign up"}
       </button>
       {isLogin ? (
