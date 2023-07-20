@@ -110,10 +110,16 @@ export default function auth() {
 
       {/* text-zinc-900 set so react-icon fill color matches that */}
       <div className="flex items-center justify-center gap-4 mt-8 text-zinc-900">
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+        <div
+          onClick={() => signIn("google", { callbackUrl: "/" })}
+          className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+        >
           <FcGoogle size={30} />
         </div>
-        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+        <div
+          onClick={() => signIn("github", { callbackUrl: "/" })}
+          className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition"
+        >
           <FaGithub size={30} />
         </div>
       </div>
