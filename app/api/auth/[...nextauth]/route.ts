@@ -5,8 +5,9 @@ import { compare } from 'bcrypt';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import type { NextAuthOptions } from "next-auth";
 
-const handler = NextAuth({
+const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -68,6 +69,8 @@ const handler = NextAuth({
   session: {
     strategy: 'jwt'
   }
-})
+}
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST, authOptions }
