@@ -9,8 +9,6 @@ import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa6";
 import useCurrentUser from "@/hooks/useCurrentUser";
 
-loade;
-
 export default function auth() {
   const { data: user, error, isLoading, mutate } = useCurrentUser();
 
