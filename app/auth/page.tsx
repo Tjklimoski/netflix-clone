@@ -63,7 +63,12 @@ export default function auth() {
 
   return (
     <>
-      {!isLoading && (
+      {/* Check to see if user is logged in. Show loading icon while checking */}
+      {isLoading ? (
+        <div className="flex justify-center">
+          <span className="loading loading-spinner loading-md text-red-600 text-center" />
+        </div>
+      ) : (
         <div>
           <h2 className="text-4xl mb-8 font-semibold">
             {isLogin ? "Sign in" : "Register"}
