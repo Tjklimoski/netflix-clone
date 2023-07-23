@@ -1,6 +1,6 @@
-import { Component } from "react";
 import NavbarItem from "./NavbarItem";
 import { BiCaretDown } from "react-icons/bi";
+import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   return (
