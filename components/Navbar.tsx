@@ -1,7 +1,7 @@
 "use client";
 
 import NavbarItem from "./NavbarItem";
-import { BiCaretDown } from "react-icons/bi";
+import { BiCaretDown, BiSearch, BiSolidBell } from "react-icons/bi";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
 
@@ -35,6 +35,27 @@ export default function Navbar() {
           <p className="text-sm">Browse</p>
           <BiCaretDown className="transition" />
           <MobileMenu visible={showMobileMenu} />
+        </div>
+
+        <div className="flex items-center gap-7 ml-auto">
+          {/* Search Icon */}
+          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+            <BiSearch />
+          </div>
+
+          {/* Notification Icon */}
+          <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
+            <BiSolidBell />
+          </div>
+
+          {/* Profile */}
+          <div className="flex items-center gap-2 cursor-pointer relative">
+            <div className="w-6 h-6 rounded-sm lg:w-10 lg:h-10 lg:rounded-md overflow-hidden">
+              <img src="/images/default-blue.png" alt="profile image" />
+            </div>
+            <BiCaretDown className="transition" />
+            <ProfileMenu />
+          </div>
         </div>
       </div>
     </nav>
