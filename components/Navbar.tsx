@@ -8,9 +8,14 @@ import ProfileMenu from "./ProfileMenu";
 
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   function toggleMobileMenu() {
     setShowMobileMenu((current) => !current);
+  }
+
+  function toggleProfileMenu() {
+    setShowProfileMenu((current) => !current);
   }
 
   return (
@@ -50,12 +55,15 @@ export default function Navbar() {
           </div>
 
           {/* Profile */}
-          <div className="flex items-center gap-2 cursor-pointer relative">
+          <div
+            onClick={() => toggleProfileMenu()}
+            className="flex items-center gap-2 cursor-pointer relative"
+          >
             <div className="w-6 h-6 rounded-sm lg:w-10 lg:h-10 lg:rounded-md overflow-hidden">
               <img src="/images/default-blue.png" alt="profile image" />
             </div>
             <BiCaretDown className="transition" />
-            <ProfileMenu visible />
+            <ProfileMenu visible={showProfileMenu} />
           </div>
         </div>
       </div>
