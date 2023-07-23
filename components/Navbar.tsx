@@ -39,7 +39,11 @@ export default function Navbar() {
           className="lg:hidden flex items-center gap-2 ml-8 cursor-pointer relative"
         >
           <p className="text-sm">Browse</p>
-          <BiCaretDown className="transition" />
+          <BiCaretDown
+            className={`transition ${
+              showMobileMenu ? "rotate-180" : "rotate-0"
+            }`}
+          />
           <MobileMenu visible={showMobileMenu} />
         </div>
 
@@ -62,7 +66,11 @@ export default function Navbar() {
             <div className="w-6 h-6 rounded-sm lg:w-10 lg:h-10 lg:rounded-md overflow-hidden">
               <img src="/images/default-blue.png" alt="profile image" />
             </div>
-            <BiCaretDown className="transition" />
+            <BiCaretDown
+              className={`transition ${
+                showProfileMenu ? "rotate-180" : "rotate-0"
+              }`}
+            />
             <ProfileMenu visible={showProfileMenu} />
           </div>
         </div>
