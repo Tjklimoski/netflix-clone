@@ -3,12 +3,15 @@
 import NavbarItem from "./NavbarItem";
 import { BiCaretDown, BiSearch, BiSolidBell } from "react-icons/bi";
 import MobileMenu from "./MobileMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProfileMenu from "./ProfileMenu";
+
+const TOP_OFFSET = 66;
 
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
 
   function toggleMobileMenu() {
     setShowMobileMenu((current) => !current);
@@ -18,9 +21,29 @@ export default function Navbar() {
     setShowProfileMenu((current) => !current);
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= TOP_OFFSET) {
+        setShowBackground(true);
+      } else {
+        setShowBackground(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav className="w-full fixed z-40">
-      <div className="px-4 md:px-16 py-6 flex items-center transition duration-500 bg-zinc-900 bg-opacity-90">
+      <div
+        className={`px-4 md:px-16 py-6 flex items-center transition duration-500 bg-zinc-900 ${
+          showBackground ? "bg-opacity-90" : "bg-opacity-0"
+        }`}
+      >
         <img className="h-4 lg:h-7" src="/images/logo.png" alt="logo" />
 
         {/* The menu bellow will only display on lg screens */}
