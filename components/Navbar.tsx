@@ -4,6 +4,7 @@ import NavbarItem from "./NavbarItem";
 import { BiCaretDown, BiSearch, BiSolidBell } from "react-icons/bi";
 import MobileMenu from "./MobileMenu";
 import { useState } from "react";
+import ProfileMenu from "./ProfileMenu";
 
 export default function Navbar() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
@@ -54,7 +55,7 @@ export default function Navbar() {
               <img src="/images/default-blue.png" alt="profile image" />
             </div>
             <BiCaretDown className="transition" />
-            <ProfileMenu />
+            <ProfileMenu visible />
           </div>
         </div>
       </div>
