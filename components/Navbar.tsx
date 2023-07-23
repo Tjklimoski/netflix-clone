@@ -22,7 +22,7 @@ export default function Navbar() {
         <div className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
           <p className="text-sm">Browse</p>
           <BiCaretDown className="transition" />
-          <MobileMenu />
+          <MobileMenu visible />
         </div>
       </div>
     </nav>
