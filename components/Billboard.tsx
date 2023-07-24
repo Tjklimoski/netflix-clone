@@ -14,7 +14,7 @@ export default function Billboard() {
         poster={billboard?.thumbnailUrl}
         src={billboard?.videoUrl}
       />
-      <div class="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
+      <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
         <p className=" w-[50%] first-letter:text-1xl md:text-5xl lg:text-6xl font-bold drop-shadow-xl select-none">
           {billboard?.title}
         </p>
