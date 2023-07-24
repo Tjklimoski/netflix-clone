@@ -5,7 +5,6 @@ import prisma from "@/lib/prismadb";
 export async function GET(req: NextRequest) {
   try {
     const movies = await prisma.movie.findMany();
-    console.log('movies: ', movies)
     return res.json(movies)
   } catch (err) {
     console.log('error')
