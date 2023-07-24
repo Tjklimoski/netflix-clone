@@ -4,18 +4,34 @@ import { without } from "lodash";
 import serverAuth from "@/lib/ServerAuth";
 import prisma from "@/lib/prismadb";
 
+interface Movie {
+  id: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnailUrl: string;
+  genre: string;
+  duration: string;
+}
+
 // Route to get the movie object based on current user's favoriteIds field
 export async function GET(req: NextRequest) {
   try {
     const { currentUser } = await serverAuth();
 
-    const favoriteMovies = await prisma.movie.findMany({
-      where: {
-        id: {
-          in: currentUser?.favoriteIds
+    // fetch and return the favorite movies with most recently added first
+    const userFavoritesList = currentUser?.favoriteIds.reverse() || [];
+    const favoriteMovies: Movie[] = [];
+    for (let i = 0; i < userFavoritesList.length; i++) {
+      const id = userFavoritesList[i];
+      const movie = await prisma.movie.findUnique({
+        where: {
+          id
         }
-      }
-    });
+      })
+      console.log('api, movie: ', movie)
+      if (movie) favoriteMovies[favoriteMovies.length] = movie;
+    }
 
     return res.json(favoriteMovies)
   } catch (err) {
