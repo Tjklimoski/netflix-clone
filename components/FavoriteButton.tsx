@@ -54,9 +54,11 @@ export default function FavoriteButton({ movieId }: FavoriteButtonProps) {
     mutateFavorites();
   }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
 
+  const Icon = isFavorite ? AiOutlineCheck : IoAddSharp;
+
   return (
     <div className="cursor-pointer group/item w-6 h-6 lg:w-10 lg:h-10 border-zinc-100 border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300">
-      <IoAddSharp size={30} />
+      <Icon size={30} />
     </div>
   );
 }
