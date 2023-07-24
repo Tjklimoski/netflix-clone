@@ -44,7 +44,9 @@ export default function MovieCard({ data }: MovieCardProps) {
           </p>
 
           <div className="flex mt-4 gap-2 items-center">
-            <p className="text-[10px] lg:text-sm">{data.duration}</p>
+            <p className="text-zinc-300 text-[10px] lg:text-sm">
+              {data.duration}
+            </p>
           </div>
 
           <div className="flex mt-4 gap-2 items-center">
