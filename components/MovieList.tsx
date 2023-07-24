@@ -29,7 +29,7 @@ export default function MovieList({ data, title }: MovieListProps) {
         </p>
         <div className="grid grid-cols-4 gap-2">
           {data.map((movie) => (
-            <MovieCard key={movie.id} />
+            <MovieCard key={movie.id} data={movie} />
           ))}
         </div>
       </div>
