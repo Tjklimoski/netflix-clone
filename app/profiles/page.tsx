@@ -1,7 +1,6 @@
 "use client";
 
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 export default function Profiles() {

@@ -1,3 +1,5 @@
+import { FaPlay } from "react-icons/fa";
+
 interface Movie {
   id: string;
   title: string;
@@ -20,12 +22,35 @@ export default function MovieCard({ data }: MovieCardProps) {
         src={data.thumbnailUrl}
         alt={`${data.title} thumbnail`}
       />
+
       <div className="opacity-0 absolute top-0 transition duration-200 z-10 invisible sm:visible delay-300 w-full scale-0 group-hover:scale-110 group-hover:-translate-y-[6vw] group-hover:translate-x-[2vw] group-hover:opacity-100">
         <img
-          className="cursor-pointer object-cover transition duration shadow-xl rounded-t-md w-full h-[12vw]"
+          className="cursor-pointer object-cover transition duration-200 shadow-xl rounded-t-md w-full"
           src={data.thumbnailUrl}
           alt={`${data.title} thumbnail`}
         />
+        <div className="z-10 bg-zinc-950 p-2 lg:p-4 absolute w-full transition shadow-md rounded-b-md">
+          <div className="flex items-center gap-3">
+            <div
+              className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white text-zinc-900 rounded-full grid place-items-center hover:bg-neutral-300"
+              onClick={() => {}}
+            >
+              <FaPlay />
+            </div>
+          </div>
+
+          <p className="text-green-400 font-semibold mt-4">
+            New <span className="text-zinc-100">2023</span>
+          </p>
+
+          <div className="flex mt-4 gap-2 items-center">
+            <p className="text-[10px] lg:text-sm">{data.duration}</p>
+          </div>
+
+          <div className="flex mt-4 gap-2 items-center">
+            <p className="text-[10px] lg:text-sm">{data.genre}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
