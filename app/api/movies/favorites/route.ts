@@ -4,6 +4,25 @@ import { without } from "lodash";
 import serverAuth from "@/lib/ServerAuth";
 import prisma from "@/lib/prismadb";
 
+// Route to get the movie object based on current user's favoriteIds field
+export async function GET(req: NextRequest) {
+  try {
+    const { currentUser } = await serverAuth();
+
+    const favoriteMovies = await prisma.movie.findMany({
+      where: {
+        id: {
+          in: currentUser?.favoriteIds
+        }
+      }
+    });
+
+    return res.json(favoriteMovies)
+  } catch (err) {
+    return new NextResponse(JSON.stringify(err), { status: 400 })
+  }
+}
+
 // Route to add a single favorite movie to the user's favoriteMovies field
 export async function POST(req: NextRequest) {
   try {
@@ -73,5 +92,4 @@ export async function DELETE(req: NextRequest) {
   }
 }
 
-// don't need GET request because when we get the user we get the favoriteIds with it.
 // don't need a PUT request because POST and DELETE handle adding and removing IDs.
