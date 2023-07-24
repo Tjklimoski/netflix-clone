@@ -9,7 +9,7 @@ export default function Profiles() {
   const { data: user, error, isLoading } = useCurrentUser();
 
   return (
-    <div className="grid place-items-center h-full">
+    <div className="grid place-items-center min-h-screen">
       <div className="flex flex-col">
         <h1 className="text-3xl md:text-6xl text-center">Who is watching?</h1>
         <div className="flex items-center justify-center gap-8 mt-10">
