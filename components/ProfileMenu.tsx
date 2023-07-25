@@ -1,3 +1,6 @@
+"use client";
+
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { signOut } from "next-auth/react";
 
 interface ProfileMenuProps {
@@ -5,6 +8,8 @@ interface ProfileMenuProps {
 }
 
 export default function ProfileMenu({ visible }: ProfileMenuProps) {
+  const { data: user } = useCurrentUser();
+
   if (!visible) {
     return null;
   }
@@ -18,7 +23,7 @@ export default function ProfileMenu({ visible }: ProfileMenuProps) {
             src="/images/default-blue.png"
             alt="profile image"
           />
-          <p className="text-sm group-hover/item:underline">Username</p>
+          <p className="text-sm group-hover/item:underline">{user?.name}</p>
         </div>
         <hr className="bg-gray-600 border-0 h-px my-4" />
         <div
