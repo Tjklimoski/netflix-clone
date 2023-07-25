@@ -29,12 +29,16 @@ export default function InfoModal({ visible, onClose }: InfoModalProps) {
     }, 300);
   }
 
-  if (!isVisible) {
+  if (!visible) {
     return null;
   }
 
   return (
-    <div className="z-50 transition duration-300 bg-black bg-opacity-80 flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0">
+    <div
+      className={`z-50 transition duration-300 bg-black flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 ${
+        isVisible ? "bg-opacity-80" : "bg-opacity-0"
+      }`}
+    >
       <div className="w-auto max-w-3xl mx-auto rounded-md overflow-hidden">
         <div
           className={`${
