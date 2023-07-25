@@ -1,5 +1,8 @@
+"use client";
+
 import { FaPlay } from "react-icons/fa";
 import FavoriteButton from "./FavoriteButton";
+import { useRouter } from "next/navigation";
 
 interface Movie {
   id: string;
@@ -16,6 +19,8 @@ interface MovieCardProps {
 }
 
 export default function MovieCard({ data }: MovieCardProps) {
+  const router = useRouter();
+
   return (
     <div className="group bg-zinc-900 relative h-[12vw]">
       <img
@@ -34,7 +39,7 @@ export default function MovieCard({ data }: MovieCardProps) {
           <div className="flex items-center gap-3">
             <div
               className="cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white text-zinc-900 rounded-full grid place-items-center hover:bg-neutral-300"
-              onClick={() => {}}
+              onClick={() => router.push(`/watch/${data?.id || ""}`)}
             >
               <FaPlay />
             </div>
