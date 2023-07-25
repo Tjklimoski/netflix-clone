@@ -1,5 +1,6 @@
 import useBillboard from "@/hooks/useBillboard";
 import { BiInfoCircle } from "react-icons/bi";
+import PlayButton from "./PlayButton";
 
 export default function Billboard() {
   const { data: billboard, error, isLoading } = useBillboard();
@@ -22,6 +23,7 @@ export default function Billboard() {
           {billboard?.description}
         </p>
         <div className="flex items-center mt-3 md:mt-4 gap-3">
+          <PlayButton movieId={billboard?.id || ""} />
           <button className="bg-white bg-opacity-30 rounded-md py-1 md:py-2 px-2 md:px-4 text-xs lg:text-lg font-semibold hover:bg-opacity-20 transition flex items-center">
             <BiInfoCircle className="mr-1" />
             More Info
