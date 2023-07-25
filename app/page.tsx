@@ -6,6 +6,7 @@ import Billboard from "@/components/Billboard";
 import MovieList from "@/components/MovieList";
 import useMovieList from "@/hooks/useMovieList";
 import useFavorites from "@/hooks/useFavorites";
+import InfoModal from "@/components/InfoModal";
 
 export default function Home() {
   // we pass a defualt value of [] to data so that our value being passed
@@ -16,6 +17,7 @@ export default function Home() {
 
   return (
     <>
+      <InfoModal visible onClose={() => {}} />
       <Navbar />
       <Billboard />
       <div className="pb-40">
